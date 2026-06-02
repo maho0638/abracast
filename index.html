@@ -27,6 +27,7 @@
           <a href="#missions">Missions</a>
           <a href="#picks">Weekly Picks</a>
           <a href="#evidence">Evidence</a>
+          <a href="#feedback">Feedback</a>
           <a href="#intake">Project Intake</a>
           <a href="#report">Report</a>
         </nav>
@@ -247,6 +248,52 @@
             </div>
             <div class="item-list" id="riskAlertList"></div>
           </article>
+        </section>
+
+        <section class="content-grid" id="feedback">
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Feedback loop</p>
+                <h2>Turn reviewers into contributors</h2>
+              </div>
+            </div>
+            <div class="action-grid">
+              <a class="action-card" id="submitProjectLink" target="_blank" rel="noreferrer">
+                <strong>Submit a project</strong>
+                <span>Add a missing Abstract app for review.</span>
+              </a>
+              <a class="action-card" id="reportRiskLink" target="_blank" rel="noreferrer">
+                <strong>Report a risk</strong>
+                <span>Flag unsafe claims, wallet flows, or weak sources.</span>
+              </a>
+              <a class="action-card" id="scoreChangeLink" target="_blank" rel="noreferrer">
+                <strong>Request score change</strong>
+                <span>Challenge a Support, Watch, or Avoid decision.</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Review request</p>
+                <h2>Copy this after submission</h2>
+              </div>
+              <button class="ghost-button" id="copyFeedbackRequest" type="button">Copy</button>
+            </div>
+            <textarea id="feedbackRequestText" readonly rows="9"></textarea>
+          </article>
+        </section>
+
+        <section class="tool-panel" id="sprint">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">6.5 day sprint</p>
+              <h2>What to improve while the role request is under review</h2>
+            </div>
+          </div>
+          <div class="sprint-grid" id="sprintGrid"></div>
         </section>
 
         <section class="tool-panel" id="intake">

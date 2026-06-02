@@ -1,4 +1,6 @@
 const storageKey = "abracast-ecosystem-radar-v2";
+const githubRepoUrl = "https://github.com/maho0638/abracast";
+const demoUrl = "https://abracast.netlify.app/";
 
 const scoreModel = [
   {
@@ -796,6 +798,8 @@ const watchList = document.querySelector("#watchList");
 const avoidList = document.querySelector("#avoidList");
 const evidenceLedger = document.querySelector("#evidenceLedger");
 const riskAlertList = document.querySelector("#riskAlertList");
+const feedbackRequestText = document.querySelector("#feedbackRequestText");
+const sprintGrid = document.querySelector("#sprintGrid");
 const reportText = document.querySelector("#reportText");
 const projectForm = document.querySelector("#projectForm");
 
@@ -807,6 +811,7 @@ document.querySelector("#resetData").addEventListener("click", resetData);
 document.querySelector("#copyPicks").addEventListener("click", copyPicks);
 document.querySelector("#copyReport").addEventListener("click", copyReport);
 document.querySelector("#downloadReport").addEventListener("click", downloadReport);
+document.querySelector("#copyFeedbackRequest").addEventListener("click", copyFeedbackRequest);
 
 projectForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -847,6 +852,8 @@ function render() {
   renderPicks();
   renderEvidenceLedger();
   renderRiskAlerts();
+  renderFeedbackLinks();
+  renderSprint();
   renderMetrics();
   renderReport();
   saveState();
@@ -1124,6 +1131,92 @@ function renderRiskAlerts() {
     `;
     riskAlertList.append(item);
   });
+}
+
+function renderFeedbackLinks() {
+  document.querySelector("#submitProjectLink").href = issueUrl(
+    "Project submission",
+    `Project name:\n\nOfficial links:\n\nWhy it matters to Abstract:\n\nUser loop:\n\nEconomic logic:\n\nSafety notes:\n`
+  );
+  document.querySelector("#reportRiskLink").href = issueUrl(
+    "Risk report",
+    `Project or URL:\n\nRisk type:\n\nEvidence links:\n\nWhat could users lose?\n\nSuggested Abracast action:\n`
+  );
+  document.querySelector("#scoreChangeLink").href = issueUrl(
+    "Score change request",
+    `Project:\n\nCurrent label:\n\nRequested label:\n\nSources:\n\nWhy the score should change:\n\nSafety impact:\n`
+  );
+
+  feedbackRequestText.value = `I submitted Abracast for Abstract review and would appreciate feedback from builders, streamers, and ecosystem users.
+
+Demo: ${demoUrl}
+GitHub: ${githubRepoUrl}
+
+What I need feedback on:
+- Which Abstract projects should be added or rescored?
+- Which Support / Watch / Avoid decisions are wrong?
+- Which projects have missing safety or source evidence?
+- What would make this more useful for streamers and new users?
+
+Security beats growth: Abracast should not Support projects without strong value, trust, and source confidence.`;
+}
+
+function renderSprint() {
+  const highUrgency = sortedProjects()
+    .filter((project) => needsResearch(project))
+    .sort((a, b) => researchUrgency(b) - researchUrgency(a))
+    .slice(0, 3)
+    .map((project) => project.name)
+    .join(", ");
+
+  const sprintItems = [
+    {
+      title: "Collect 3 feedback receipts",
+      detail: "Ask builders or users to review the demo and screenshot useful comments for the next application cycle.",
+    },
+    {
+      title: "Resolve top research risks",
+      detail: highUrgency ? `Prioritize: ${highUrgency}.` : "No urgent risk queue items right now.",
+    },
+    {
+      title: "Publish one weekly picks report",
+      detail: "Use the report export and WEEKLY-REPORT-TEMPLATE.md to create a dated Abstract picks update.",
+    },
+    {
+      title: "Add source links to Watch projects",
+      detail: "Any project with Low or Medium-low confidence needs official links, docs, audit/badge evidence, or safer labeling.",
+    },
+    {
+      title: "Turn questions into GitHub issues",
+      detail: "Use project submission, risk report, and score change issues so the repository shows public collaboration.",
+    },
+    {
+      title: "Improve one product feature",
+      detail: "Best next feature: category-specific weights for games, DeFi, marketplace, tooling, and chance/risk apps.",
+    },
+  ];
+
+  sprintGrid.innerHTML = "";
+  sprintItems.forEach((item, index) => {
+    const card = document.createElement("article");
+    card.className = "sprint-card";
+    card.innerHTML = `
+      <span>${index + 1}</span>
+      <div>
+        <strong>${escapeHtml(item.title)}</strong>
+        <p>${escapeHtml(item.detail)}</p>
+      </div>
+    `;
+    sprintGrid.append(card);
+  });
+}
+
+function issueUrl(title, body) {
+  const params = new URLSearchParams({
+    title,
+    body,
+  });
+  return `${githubRepoUrl}/issues/new?${params.toString()}`;
 }
 
 function renderMetrics() {
@@ -1440,6 +1533,11 @@ async function copyPicks() {
 async function copyReport() {
   await copyText(reportText.value);
   flashButton("#copyReport", "Copied");
+}
+
+async function copyFeedbackRequest() {
+  await copyText(feedbackRequestText.value);
+  flashButton("#copyFeedbackRequest", "Copied");
 }
 
 async function copyText(text) {

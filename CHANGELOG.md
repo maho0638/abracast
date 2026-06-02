@@ -14,6 +14,8 @@
 - Added risk alert board
 - Added research urgency sorting
 - Added automatic blocker summaries
+- Added feedback loop with prefilled GitHub issue links
+- Added 6.5 day review sprint board
 - Added GitHub issue templates
 - Added weekly report template
 - Added curation governance

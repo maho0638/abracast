@@ -514,7 +514,9 @@ textarea {
 .model-list,
 .insight-list,
 .mission-list,
-.item-list {
+.item-list,
+.action-grid,
+.sprint-grid {
   display: grid;
   gap: 10px;
 }
@@ -610,6 +612,64 @@ textarea {
   line-height: 1.45;
 }
 
+.action-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.action-card {
+  display: grid;
+  gap: 8px;
+  min-height: 112px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.action-card:hover {
+  border-color: #7fa1ff;
+  background: #f5f8ff;
+}
+
+.action-card span {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.sprint-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sprint-card {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  min-height: 118px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.sprint-card > span {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #ecfff7;
+  color: var(--green);
+  font-weight: 950;
+}
+
+.sprint-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .intake-form {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -634,7 +694,9 @@ textarea {
   .topbar,
   .radar-layout,
   .content-grid,
-  .pick-columns {
+  .pick-columns,
+  .action-grid,
+  .sprint-grid {
     grid-template-columns: 1fr;
   }
 

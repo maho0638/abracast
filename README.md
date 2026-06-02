@@ -31,6 +31,8 @@ Abracast is designed to answer those questions.
 - Weekly Abstract picks
 - Evidence ledger
 - Risk alert board
+- Feedback loop with prefilled GitHub issue links
+- 6.5 day review sprint board
 - Project intake form
 - Markdown report export
 - GitHub issue templates

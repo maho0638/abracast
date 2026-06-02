@@ -32,6 +32,8 @@
 - Streamer-ready weekly show notes
 - Curation governance
 - Weekly report workflow
+- Review sprint board
+- Feedback request copy flow
 
 ## Version 1.0 - Public Product
 
