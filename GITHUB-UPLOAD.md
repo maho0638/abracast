@@ -49,7 +49,7 @@ After upload, links should look like:
 ```txt
 GitHub: https://github.com/YOUR_USERNAME/abracast
 GitHub Pages: https://YOUR_USERNAME.github.io/abracast/
-Netlify demo: https://monumental-genie-008c26.netlify.app/
+Netlify demo: https://abracast.netlify.app/
 ```
 
 ## 5. After upload

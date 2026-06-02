@@ -4,7 +4,7 @@ Abracast is an open-source ecosystem radar for Abstract.
 
 It helps users, streamers, and builders identify the Abstract projects worth playing, streaming, funding, reviewing, and building around.
 
-Live demo: `https://monumental-genie-008c26.netlify.app/`
+Live demo: `https://abracast.netlify.app/`
 
 ## Core thesis
 

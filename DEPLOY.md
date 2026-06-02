@@ -5,7 +5,7 @@ Abracast is a static app. It can be deployed on GitHub Pages, Netlify, Vercel, C
 Current Netlify demo:
 
 ```txt
-https://monumental-genie-008c26.netlify.app/
+https://abracast.netlify.app/
 ```
 
 ## GitHub Pages

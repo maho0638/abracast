@@ -60,7 +60,7 @@ Current features:
 - Markdown report export
 
 Demo:
-https://monumental-genie-008c26.netlify.app/
+https://abracast.netlify.app/
 
 GitHub:
 Report:
