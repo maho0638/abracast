@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abracast - Abstract Ecosystem Radar</title>
+    <meta
+      name="description"
+      content="Open-source radar for finding the Abstract projects worth playing, streaming, funding, and building around."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Abracast navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">A</div>
+          <div>
+            <strong>Abracast</strong>
+            <span>Abstract Ecosystem Radar</span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="active" href="#radar">Radar</a>
+          <a href="#model">Score Model</a>
+          <a href="#missions">Missions</a>
+          <a href="#picks">Weekly Picks</a>
+          <a href="#evidence">Evidence</a>
+          <a href="#intake">Project Intake</a>
+          <a href="#report">Report</a>
+        </nav>
+
+        <section class="side-panel">
+          <p class="panel-label">Product thesis</p>
+          <p>
+            Good apps bring users, streamers, trades, mints, tips, and retention. Abracast
+            helps the community find them faster.
+          </p>
+        </section>
+
+        <section class="side-panel">
+          <p class="panel-label">Decision labels</p>
+          <dl>
+            <div>
+              <dt>Support</dt>
+              <dd>78+</dd>
+            </div>
+            <div>
+              <dt>Watch</dt>
+              <dd>55+</dd>
+            </div>
+            <div>
+              <dt>Avoid</dt>
+              <dd>&lt;55</dd>
+            </div>
+          </dl>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Open-source ecosystem intelligence</p>
+            <h1>Find the Abstract projects worth playing, streaming, funding, and building around.</h1>
+            <p class="lede">
+              Abracast scores apps by user value, economic activity, replayability, streamer
+              potential, onboarding, safety, update cadence, and Abstract fit. The goal is to
+              help good projects get attention and help users avoid empty hype.
+            </p>
+          </div>
+          <div class="score-tile">
+            <span id="ecosystemScore">0</span>
+            <small>radar health</small>
+          </div>
+        </header>
+
+        <section class="metric-grid" aria-label="Radar metrics">
+          <article class="metric">
+            <span>Projects tracked</span>
+            <strong id="metricProjects">0</strong>
+          </article>
+          <article class="metric">
+            <span>Support picks</span>
+            <strong id="metricSupport">0</strong>
+          </article>
+          <article class="metric">
+            <span>Avg trust</span>
+            <strong id="metricTrust">0</strong>
+          </article>
+          <article class="metric">
+            <span>Research queue</span>
+            <strong id="metricQueue">0</strong>
+          </article>
+        </section>
+
+        <section class="tool-panel" id="radar">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Project Radar</p>
+              <h2>Abstract projects ranked by ecosystem value</h2>
+            </div>
+            <button class="ghost-button" id="resetData" type="button">Reset sample data</button>
+          </div>
+
+          <div class="filter-bar">
+            <label>
+              <span>Search</span>
+              <input id="searchInput" placeholder="Search project, category, reason..." />
+            </label>
+            <label>
+              <span>Category</span>
+              <select id="categoryFilter">
+                <option value="all">All categories</option>
+              </select>
+            </label>
+            <label>
+              <span>Decision</span>
+              <select id="decisionFilter">
+                <option value="all">All decisions</option>
+                <option value="Support">Support</option>
+                <option value="Watch">Watch</option>
+                <option value="Avoid">Avoid</option>
+              </select>
+            </label>
+            <label>
+              <span>Sort</span>
+              <select id="sortFilter">
+                <option value="value">Value score</option>
+                <option value="trust">Trust score</option>
+                <option value="confidence">Source confidence</option>
+                <option value="risk">Research urgency</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="radar-layout">
+            <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+            <aside class="detail-panel" id="projectDetail" aria-label="Selected project"></aside>
+          </div>
+        </section>
+
+        <section class="content-grid" id="model">
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Score Model</p>
+                <h2>What Abracast rewards</h2>
+              </div>
+            </div>
+            <div class="model-list" id="modelList"></div>
+          </article>
+
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Security gate</p>
+                <h2>What must be trusted before Support</h2>
+              </div>
+            </div>
+            <div class="model-list trust-list" id="trustList"></div>
+            <h3 class="section-subhead">Blind spots the Portal alone may not show</h3>
+            <div class="insight-list">
+              <article>
+                <strong>Hype is not retention</strong>
+                <p>A project can trend for XP but fail to keep real users after the reward loop fades.</p>
+              </article>
+              <article>
+                <strong>Upvotes are not revenue</strong>
+                <p>Abstract needs apps that create trading, marketplace, tips, mints, or repeat gameplay.</p>
+              </article>
+              <article>
+                <strong>Streamability matters</strong>
+                <p>If creators can explain and play it live, the project can pull new users into the chain.</p>
+              </article>
+              <article>
+                <strong>Friction kills good ideas</strong>
+                <p>Projects need clean onboarding through AGW, clear loops, and low confusion for newcomers.</p>
+              </article>
+            </div>
+          </article>
+        </section>
+
+        <section class="content-grid" id="missions">
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Streamer Mission Board</p>
+                <h2>Content that helps the ecosystem</h2>
+              </div>
+            </div>
+            <div class="mission-list" id="missionList"></div>
+          </article>
+
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Developer feedback</p>
+                <h2>Common fixes Abracast should surface</h2>
+              </div>
+            </div>
+            <div class="insight-list" id="gapList"></div>
+          </article>
+        </section>
+
+        <section class="tool-panel" id="picks">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Weekly Abstract Picks</p>
+              <h2>Support, watch, and avoid recommendations</h2>
+            </div>
+            <button class="ghost-button" id="copyPicks" type="button">Copy picks</button>
+          </div>
+          <div class="pick-columns">
+            <div>
+              <h3>Support now</h3>
+              <div class="item-list" id="supportList"></div>
+            </div>
+            <div>
+              <h3>Watch closely</h3>
+              <div class="item-list" id="watchList"></div>
+            </div>
+            <div>
+              <h3>Avoid for now</h3>
+              <div class="item-list" id="avoidList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-grid" id="evidence">
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Evidence Ledger</p>
+                <h2>Sources behind the radar</h2>
+              </div>
+            </div>
+            <div class="item-list" id="evidenceLedger"></div>
+          </article>
+
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Risk Alerts</p>
+                <h2>What blocks Support</h2>
+              </div>
+            </div>
+            <div class="item-list" id="riskAlertList"></div>
+          </article>
+        </section>
+
+        <section class="tool-panel" id="intake">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Project Intake</p>
+              <h2>Add a project to evaluate</h2>
+            </div>
+          </div>
+
+          <form class="intake-form" id="projectForm">
+            <label>
+              <span>Name</span>
+              <input id="projectName" required placeholder="Project name" />
+            </label>
+            <label>
+              <span>Category</span>
+              <input id="projectCategory" required placeholder="Game, Marketplace, Tool, Social..." />
+            </label>
+            <label>
+              <span>Website</span>
+              <input id="projectUrl" placeholder="https://..." />
+            </label>
+            <label class="wide">
+              <span>Why it matters</span>
+              <input id="projectWhy" required placeholder="What value does it bring to users and Abstract?" />
+            </label>
+            <label>
+              <span>User value</span>
+              <input id="scoreUser" type="number" min="0" max="10" value="6" />
+            </label>
+            <label>
+              <span>Economy</span>
+              <input id="scoreEconomy" type="number" min="0" max="10" value="5" />
+            </label>
+            <label>
+              <span>Replay</span>
+              <input id="scoreReplay" type="number" min="0" max="10" value="5" />
+            </label>
+            <label>
+              <span>Stream</span>
+              <input id="scoreStream" type="number" min="0" max="10" value="5" />
+            </label>
+            <label>
+              <span>Onboarding</span>
+              <input id="scoreOnboarding" type="number" min="0" max="10" value="5" />
+            </label>
+            <label>
+              <span>Safety</span>
+              <input id="scoreSafety" type="number" min="0" max="10" value="6" />
+            </label>
+            <label>
+              <span>Updates</span>
+              <input id="scoreUpdates" type="number" min="0" max="10" value="5" />
+            </label>
+            <label>
+              <span>Abstract fit</span>
+              <input id="scoreFit" type="number" min="0" max="10" value="6" />
+            </label>
+            <button class="primary-button wide" type="submit">Add project</button>
+          </form>
+        </section>
+
+        <section class="tool-panel packet-panel" id="report">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Shareable output</p>
+              <h2>Ecosystem radar report</h2>
+            </div>
+            <div class="button-row">
+              <button class="ghost-button" id="copyReport" type="button">Copy</button>
+              <button class="ghost-button" id="downloadReport" type="button">Download</button>
+            </div>
+          </div>
+          <textarea id="reportText" readonly rows="16"></textarea>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
