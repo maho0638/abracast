@@ -37,6 +37,7 @@ Abracast is designed to answer those questions.
 - Weekly report template
 - Curation governance
 - Static deploy config
+- Visible fallback community templates in `COMMUNITY-TEMPLATES.md`
 
 ## Score model
 
